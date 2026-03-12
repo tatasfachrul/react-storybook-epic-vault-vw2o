@@ -1,0 +1,22 @@
+{
+  "nodes": [
+    {
+      "id": "input_node",
+      "type": "Input",
+      "label": "User Query",
+      "nodeCategory": "input"
+    },
+    {
+      "id": "component_assistant",
+      "type": "Agent",
+      "label": "Component Assistant Agent",
+      "nodeCategory": "agent"
+    }
+  ],
+  "edges": [
+    {
+      "source": "input_node",
+      "target": "component_assistant"
+    }
+  ]
+}

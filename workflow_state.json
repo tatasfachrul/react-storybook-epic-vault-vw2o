@@ -1,0 +1,11 @@
+{
+  "agents": {
+    "component_assistant": {
+      "agent_id": "69b23873b4ae37dbd0601e42",
+      "name": "Component Assistant Agent",
+      "type": "single",
+      "has_knowledge_base": true,
+      "rag_id": "69b23860cc96ef3cace6280f"
+    }
+  }
+}

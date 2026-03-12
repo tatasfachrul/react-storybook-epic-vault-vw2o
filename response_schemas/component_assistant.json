@@ -1,0 +1,15 @@
+{
+  "agent_name": "Component Assistant Agent",
+  "agent_id": "69b23873b4ae37dbd0601e42",
+  "agent_type": "json",
+  "accessor": "json",
+  "has_module_outputs": false,
+  "has_knowledge_base": true,
+  "rag_id": "69b23860cc96ef3cace6280f",
+  "schema": {
+    "answer": "string - main response text",
+    "component_name": "string - component name discussed",
+    "code_snippet": "string - code example if relevant",
+    "related_components": "string[] - related component names"
+  }
+}

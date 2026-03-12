@@ -1,0 +1,24 @@
+{
+  "agent_name": "Component Assistant Agent",
+  "agent_id": "69b23873b4ae37dbd0601e42",
+  "description": "Answers questions about UI components, recommends appropriate components for use cases, generates customized code snippets, explains props/variants/accessibility guidelines by searching the component documentation knowledge base",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "answer": "string",
+    "component_name": "string",
+    "code_snippet": "string",
+    "related_components": [
+      "string"
+    ]
+  },
+  "example_response": {
+    "answer": "The main response text with component information, recommendations, or code snippets",
+    "component_name": "The name of the component being discussed, if applicable",
+    "code_snippet": "A code snippet example if relevant to the question",
+    "related_components": [
+      "sample string"
+    ]
+  }
+}
