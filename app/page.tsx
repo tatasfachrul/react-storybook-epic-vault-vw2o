@@ -21,10 +21,11 @@ import {
   Layout,
   Briefcase,
 } from "lucide-react";
-
+import rrLogo from "../assets/rr-logo.png";
 import DashboardSection from "./sections/DashboardSection";
 import CatalogSection from "./sections/CatalogSection";
 import DetailSection from "./sections/DetailSection";
+import Image from "next/image";
 
 // --- ErrorBoundary ---
 class ErrorBoundary extends React.Component<
@@ -793,11 +794,11 @@ export default function Page() {
         >
           <div className="px-5 py-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-lg bg-[hsl(222,47%,11%)] flex items-center justify-center">
-                <Component className="h-4 w-4 text-white" />
+              <div className="w-7 h-7 rounded-lg flex items-center justify-center">
+                <Image src={rrLogo} alt="Logo" width={24} height={24} />
               </div>
               <span className="text-base font-semibold tracking-tight">
-                ComponentVault
+                RR Design System
               </span>
             </div>
             <button
@@ -944,14 +945,6 @@ export default function Page() {
             )}
           </main>
         </div>
-
-        <button
-          onClick={() => setAssistantOpen(true)}
-          className="fixed bottom-6 right-6 z-30 w-12 h-12 rounded-full bg-[hsl(222,47%,11%)] text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 flex items-center justify-center"
-          aria-label="Open AI Assistant"
-        >
-          <MessageSquareText className="h-5 w-5" />
-        </button>
       </div>
     </ErrorBoundary>
   );
