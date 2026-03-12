@@ -44,12 +44,12 @@ class ErrorBoundary extends React.Component<
         <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
           <div className="text-center p-8 max-w-md">
             <h2 className="text-xl font-semibold mb-2">Something went wrong</h2>
-            <p className="text-muted-foreground mb-4 text-sm">
+            <p className="text-muted-foreground mb-4 text-base">
               {this.state.error}
             </p>
             <button
               onClick={() => this.setState({ hasError: false, error: "" })}
-              className="px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm"
+              className="px-4 py-2 bg-primary text-primary-foreground rounded-md text-base"
             >
               Try again
             </button>
@@ -796,7 +796,7 @@ export default function Page() {
               <div className="w-7 h-7 rounded-lg bg-[hsl(222,47%,11%)] flex items-center justify-center">
                 <Component className="h-4 w-4 text-white" />
               </div>
-              <span className="text-sm font-semibold tracking-tight">
+              <span className="text-base font-semibold tracking-tight">
                 ComponentVault
               </span>
             </div>
@@ -818,7 +818,7 @@ export default function Page() {
                     setSelectedComponentId(null);
                     setSidebarOpen(false);
                   }}
-                  className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${view === item.id && (item.id !== "catalog" || !selectedComponentId) ? "bg-[hsl(222,47%,11%)]/8 text-[hsl(222,47%,11%)]" : "text-[hsl(215,16%,47%)] hover:bg-black/5 hover:text-[hsl(222,47%,11%)]"}`}
+                  className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${view === item.id && (item.id !== "catalog" || !selectedComponentId) ? "bg-[hsl(222,47%,11%)]/8 text-[hsl(222,47%,11%)]" : "text-[hsl(215,16%,47%)] hover:bg-black/5 hover:text-[hsl(222,47%,11%)]"}`}
                 >
                   {item.icon}
                   {item.label}
@@ -828,7 +828,7 @@ export default function Page() {
               <div className="pt-2">
                 <button
                   onClick={() => setCategoriesExpanded((p) => !p)}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium text-[hsl(215,16%,47%)] hover:bg-black/5 hover:text-[hsl(222,47%,11%)] transition-colors"
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium text-[hsl(215,16%,47%)] hover:bg-black/5 hover:text-[hsl(222,47%,11%)] transition-colors"
                 >
                   <Shapes className="h-4 w-4" />
                   <span className="flex-1 text-left">Categories</span>
@@ -844,7 +844,7 @@ export default function Page() {
                       <button
                         key={cat.id}
                         onClick={() => handleSelectCategory(cat.id)}
-                        className={`w-full flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs transition-colors ${selectedCategory === cat.id && view === "catalog" ? "bg-[hsl(222,47%,11%)]/8 text-[hsl(222,47%,11%)] font-medium" : "text-[hsl(215,16%,47%)] hover:bg-black/5"}`}
+                        className={`w-full flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors ${selectedCategory === cat.id && view === "catalog" ? "bg-[hsl(222,47%,11%)]/8 text-[hsl(222,47%,11%)] font-medium" : "text-[hsl(215,16%,47%)] hover:bg-black/5"}`}
                       >
                         {categoryIcons[cat.id]}
                         <span className="flex-1 text-left">{cat.name}</span>
@@ -888,7 +888,7 @@ export default function Page() {
               >
                 <Menu className="h-5 w-5" />
               </button>
-              <h2 className="text-sm font-semibold text-[hsl(222,47%,11%)] hidden sm:block">
+              <h2 className="text-base font-semibold text-[hsl(222,47%,11%)] hidden sm:block">
                 {viewTitles[view]}
               </h2>
               <form
@@ -900,7 +900,7 @@ export default function Page() {
                   value={globalSearch}
                   onChange={(e) => setGlobalSearch(e.target.value)}
                   placeholder="Search components..."
-                  className="pl-9 h-8 text-xs bg-white/60 border-[hsl(214,32%,91%)] rounded-lg"
+                  className="pl-9 h-8 text-sm bg-white/60 border-[hsl(214,32%,91%)] rounded-lg"
                 />
               </form>
             </div>

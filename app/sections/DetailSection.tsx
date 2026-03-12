@@ -111,14 +111,14 @@ export default function DetailSection({ component, onBack, onNavigateToComponent
   if (!comp) {
     return (
       <div className="flex items-center justify-center h-64">
-        <p className="text-sm text-[hsl(215,16%,47%)]">Select a component to view its details</p>
+        <p className="text-base text-[hsl(215,16%,47%)]">Select a component to view its details</p>
       </div>
     )
   }
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center gap-2 text-xs text-[hsl(215,16%,47%)]">
+      <div className="flex items-center gap-2 text-sm text-[hsl(215,16%,47%)]">
         <button onClick={onBack} className="flex items-center gap-1 hover:text-[hsl(222,47%,11%)] transition-colors">
           <ArrowLeft className="h-3.5 w-3.5" />
           <span>Catalog</span>
@@ -135,7 +135,7 @@ export default function DetailSection({ component, onBack, onNavigateToComponent
             <h1 className="text-2xl font-semibold tracking-tight text-[hsl(222,47%,11%)]">{comp.name}</h1>
             <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ${statusColor[comp.status] || ''}`}>{comp.status}</span>
           </div>
-          <p className="text-sm text-[hsl(215,16%,47%)] mt-1 leading-relaxed">{comp.description}</p>
+          <p className="text-base text-[hsl(215,16%,47%)] mt-1 leading-relaxed">{comp.description}</p>
         </div>
       </div>
 
@@ -145,7 +145,7 @@ export default function DetailSection({ component, onBack, onNavigateToComponent
             <button
               key={v}
               onClick={() => { setSelectedVariant(i); handlePropChange('variant', v) }}
-              className={`px-3 py-1 rounded-full text-xs font-medium transition-all border ${selectedVariant === i ? 'bg-[hsl(222,47%,11%)] text-white border-[hsl(222,47%,11%)]' : 'bg-white/60 text-[hsl(215,16%,47%)] border-[hsl(214,32%,91%)] hover:bg-white/80'}`}
+              className={`px-3 py-1 rounded-full text-sm font-medium transition-all border ${selectedVariant === i ? 'bg-[hsl(222,47%,11%)] text-white border-[hsl(222,47%,11%)]' : 'bg-white/60 text-[hsl(215,16%,47%)] border-[hsl(214,32%,91%)] hover:bg-white/80'}`}
             >
               {v}
             </button>
@@ -155,7 +155,7 @@ export default function DetailSection({ component, onBack, onNavigateToComponent
 
       <Card className="bg-[hsl(0,0%,98%)]/75 backdrop-blur-[16px] border border-white/[0.18] rounded-[0.875rem] shadow-md overflow-hidden">
         <div className="flex items-center justify-between px-4 py-2 border-b border-[hsl(214,32%,91%)] bg-white/40">
-          <span className="text-xs font-medium text-[hsl(215,16%,47%)]">Preview</span>
+          <span className="text-sm font-medium text-[hsl(215,16%,47%)]">Preview</span>
           <div className="flex gap-1">
             <button onClick={() => setCanvasBg('light')} className={`p-1.5 rounded ${canvasBg === 'light' ? 'bg-[hsl(214,32%,91%)]' : 'hover:bg-white/60'}`}><Sun className="h-3.5 w-3.5 text-[hsl(215,16%,47%)]" /></button>
             <button onClick={() => setCanvasBg('dark')} className={`p-1.5 rounded ${canvasBg === 'dark' ? 'bg-[hsl(214,32%,91%)]' : 'hover:bg-white/60'}`}><Moon className="h-3.5 w-3.5 text-[hsl(215,16%,47%)]" /></button>
@@ -169,26 +169,26 @@ export default function DetailSection({ component, onBack, onNavigateToComponent
 
       <Tabs defaultValue="controls" className="w-full">
         <TabsList className="bg-white/60 border border-[hsl(214,32%,91%)] rounded-lg p-1">
-          <TabsTrigger value="controls" className="text-xs rounded-md data-[state=active]:bg-white data-[state=active]:shadow-sm">Controls</TabsTrigger>
-          <TabsTrigger value="code" className="text-xs rounded-md data-[state=active]:bg-white data-[state=active]:shadow-sm">Code</TabsTrigger>
-          <TabsTrigger value="props" className="text-xs rounded-md data-[state=active]:bg-white data-[state=active]:shadow-sm">Props</TabsTrigger>
-          <TabsTrigger value="guidelines" className="text-xs rounded-md data-[state=active]:bg-white data-[state=active]:shadow-sm">Guidelines</TabsTrigger>
+          <TabsTrigger value="controls" className="text-sm rounded-md data-[state=active]:bg-white data-[state=active]:shadow-sm">Controls</TabsTrigger>
+          <TabsTrigger value="code" className="text-sm rounded-md data-[state=active]:bg-white data-[state=active]:shadow-sm">Code</TabsTrigger>
+          <TabsTrigger value="props" className="text-sm rounded-md data-[state=active]:bg-white data-[state=active]:shadow-sm">Props</TabsTrigger>
+          <TabsTrigger value="guidelines" className="text-sm rounded-md data-[state=active]:bg-white data-[state=active]:shadow-sm">Guidelines</TabsTrigger>
         </TabsList>
 
         <TabsContent value="controls" className="mt-4">
           <Card className="bg-[hsl(0,0%,98%)]/75 backdrop-blur-[16px] border border-white/[0.18] rounded-[0.875rem] shadow-md">
             <CardContent className="pt-5 pb-4 px-5 space-y-4">
               {safeProps.length === 0 ? (
-                <p className="text-xs text-[hsl(215,16%,47%)]">No configurable props</p>
+                <p className="text-sm text-[hsl(215,16%,47%)]">No configurable props</p>
               ) : (
                 safeProps.map((prop) => (
                   <div key={prop.name} className="flex items-center gap-4">
-                    <label className="text-xs font-medium text-[hsl(222,47%,11%)] w-28 shrink-0">{prop.name}{prop.required && <span className="text-red-500 ml-0.5">*</span>}</label>
+                    <label className="text-sm font-medium text-[hsl(222,47%,11%)] w-28 shrink-0">{prop.name}{prop.required && <span className="text-red-500 ml-0.5">*</span>}</label>
                     {prop.type === 'boolean' ? (
                       <Switch checked={!!propValues[prop.name]} onCheckedChange={(v) => handlePropChange(prop.name, v)} />
                     ) : prop.type.includes('|') ? (
                       <Select value={String(propValues[prop.name] ?? prop.default)} onValueChange={(v) => handlePropChange(prop.name, v)}>
-                        <SelectTrigger className="h-8 text-xs flex-1 bg-white/60 border-[hsl(214,32%,91%)] rounded-lg">
+                        <SelectTrigger className="h-8 text-sm flex-1 bg-white/60 border-[hsl(214,32%,91%)] rounded-lg">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -198,9 +198,9 @@ export default function DetailSection({ component, onBack, onNavigateToComponent
                         </SelectContent>
                       </Select>
                     ) : prop.type === 'number' ? (
-                      <Input type="number" value={String(propValues[prop.name] ?? '')} onChange={(e) => handlePropChange(prop.name, Number(e.target.value))} className="h-8 text-xs flex-1 bg-white/60 border-[hsl(214,32%,91%)] rounded-lg" />
+                      <Input type="number" value={String(propValues[prop.name] ?? '')} onChange={(e) => handlePropChange(prop.name, Number(e.target.value))} className="h-8 text-sm flex-1 bg-white/60 border-[hsl(214,32%,91%)] rounded-lg" />
                     ) : (
-                      <Input value={String(propValues[prop.name] ?? '')} onChange={(e) => handlePropChange(prop.name, e.target.value)} placeholder={prop.default || prop.name} className="h-8 text-xs flex-1 bg-white/60 border-[hsl(214,32%,91%)] rounded-lg" />
+                      <Input value={String(propValues[prop.name] ?? '')} onChange={(e) => handlePropChange(prop.name, e.target.value)} placeholder={prop.default || prop.name} className="h-8 text-sm flex-1 bg-white/60 border-[hsl(214,32%,91%)] rounded-lg" />
                     )}
                   </div>
                 ))
@@ -212,13 +212,13 @@ export default function DetailSection({ component, onBack, onNavigateToComponent
         <TabsContent value="code" className="mt-4">
           <Card className="bg-[hsl(0,0%,98%)]/75 backdrop-blur-[16px] border border-white/[0.18] rounded-[0.875rem] shadow-md overflow-hidden">
             <div className="flex items-center justify-between px-4 py-2 border-b border-[hsl(214,32%,91%)] bg-white/40">
-              <span className="text-xs font-medium text-[hsl(215,16%,47%)]">Generated Code</span>
-              <button onClick={handleCopy} className="flex items-center gap-1 text-xs text-[hsl(215,16%,47%)] hover:text-[hsl(222,47%,11%)] transition-colors">
+              <span className="text-sm font-medium text-[hsl(215,16%,47%)]">Generated Code</span>
+              <button onClick={handleCopy} className="flex items-center gap-1 text-sm text-[hsl(215,16%,47%)] hover:text-[hsl(222,47%,11%)] transition-colors">
                 {copied ? <><CheckCircle className="h-3.5 w-3.5 text-emerald-600" /><span className="text-emerald-600">Copied</span></> : <><Copy className="h-3.5 w-3.5" /><span>Copy</span></>}
               </button>
             </div>
             <div className="bg-slate-900 p-4">
-              <pre className="text-xs text-slate-300 font-mono whitespace-pre-wrap leading-relaxed">{currentCode}</pre>
+              <pre className="text-sm text-slate-300 font-mono whitespace-pre-wrap leading-relaxed">{currentCode}</pre>
             </div>
           </Card>
         </TabsContent>
@@ -229,21 +229,21 @@ export default function DetailSection({ component, onBack, onNavigateToComponent
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="text-xs font-semibold">Name</TableHead>
-                    <TableHead className="text-xs font-semibold">Type</TableHead>
-                    <TableHead className="text-xs font-semibold">Default</TableHead>
-                    <TableHead className="text-xs font-semibold w-16">Required</TableHead>
-                    <TableHead className="text-xs font-semibold">Description</TableHead>
+                    <TableHead className="text-sm font-semibold">Name</TableHead>
+                    <TableHead className="text-sm font-semibold">Type</TableHead>
+                    <TableHead className="text-sm font-semibold">Default</TableHead>
+                    <TableHead className="text-sm font-semibold w-16">Required</TableHead>
+                    <TableHead className="text-sm font-semibold">Description</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {safeProps.map((prop) => (
                     <TableRow key={prop.name}>
-                      <TableCell className="text-xs font-mono text-indigo-600">{prop.name}</TableCell>
-                      <TableCell className="text-xs font-mono text-[hsl(215,16%,47%)]">{prop.type}</TableCell>
-                      <TableCell className="text-xs font-mono">{prop.default || '-'}</TableCell>
-                      <TableCell className="text-xs">{prop.required ? <Badge variant="secondary" className="text-[9px] bg-red-50 text-red-600">Yes</Badge> : <span className="text-[hsl(215,16%,47%)]">No</span>}</TableCell>
-                      <TableCell className="text-xs text-[hsl(215,16%,47%)] leading-relaxed">{prop.description}</TableCell>
+                      <TableCell className="text-sm font-mono text-indigo-600">{prop.name}</TableCell>
+                      <TableCell className="text-sm font-mono text-[hsl(215,16%,47%)]">{prop.type}</TableCell>
+                      <TableCell className="text-sm font-mono">{prop.default || '-'}</TableCell>
+                      <TableCell className="text-sm">{prop.required ? <Badge variant="secondary" className="text-[9px] bg-red-50 text-red-600">Yes</Badge> : <span className="text-[hsl(215,16%,47%)]">No</span>}</TableCell>
+                      <TableCell className="text-sm text-[hsl(215,16%,47%)] leading-relaxed">{prop.description}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -256,19 +256,19 @@ export default function DetailSection({ component, onBack, onNavigateToComponent
           <Card className="bg-[hsl(0,0%,98%)]/75 backdrop-blur-[16px] border border-white/[0.18] rounded-[0.875rem] shadow-md">
             <CardContent className="pt-5 pb-4 px-5 space-y-5">
               <div>
-                <h3 className="text-sm font-semibold text-[hsl(222,47%,11%)] mb-2">Usage Guidelines</h3>
-                <div className="text-xs text-[hsl(215,16%,47%)] leading-relaxed whitespace-pre-line">{comp.guidelines || 'No guidelines available.'}</div>
+                <h3 className="text-base font-semibold text-[hsl(222,47%,11%)] mb-2">Usage Guidelines</h3>
+                <div className="text-sm text-[hsl(215,16%,47%)] leading-relaxed whitespace-pre-line">{comp.guidelines || 'No guidelines available.'}</div>
               </div>
               <Separator />
               <div>
-                <h3 className="text-sm font-semibold text-[hsl(222,47%,11%)] mb-2">Accessibility</h3>
-                <div className="text-xs text-[hsl(215,16%,47%)] leading-relaxed whitespace-pre-line">{comp.accessibility || 'No accessibility notes available.'}</div>
+                <h3 className="text-base font-semibold text-[hsl(222,47%,11%)] mb-2">Accessibility</h3>
+                <div className="text-sm text-[hsl(215,16%,47%)] leading-relaxed whitespace-pre-line">{comp.accessibility || 'No accessibility notes available.'}</div>
               </div>
               {safeRelated.length > 0 && (
                 <>
                   <Separator />
                   <div>
-                    <h3 className="text-sm font-semibold text-[hsl(222,47%,11%)] mb-2">Related Components</h3>
+                    <h3 className="text-base font-semibold text-[hsl(222,47%,11%)] mb-2">Related Components</h3>
                     <div className="flex flex-wrap gap-2">
                       {safeRelated.map((r) => {
                         const found = Array.isArray(allComponents) ? allComponents.find(c => c.name === r) : null
@@ -276,7 +276,7 @@ export default function DetailSection({ component, onBack, onNavigateToComponent
                           <button
                             key={r}
                             onClick={() => found ? onNavigateToComponent(found.id) : undefined}
-                            className={`text-xs px-3 py-1 rounded-full border transition-colors ${found ? 'bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-indigo-100 cursor-pointer' : 'bg-slate-50 text-slate-500 border-slate-200 cursor-default'}`}
+                            className={`text-sm px-3 py-1 rounded-full border transition-colors ${found ? 'bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-indigo-100 cursor-pointer' : 'bg-slate-50 text-slate-500 border-slate-200 cursor-default'}`}
                           >
                             {r}
                           </button>
@@ -301,7 +301,7 @@ function ComponentPreview({ name, propValues, variant, isDark }: { name: string;
   const children = typeof propValues['children'] === 'string' && propValues['children'] ? propValues['children'] : name
   const disabled = !!propValues['disabled']
   const size = String(propValues['size'] || 'md')
-  const sizeClasses = size === 'sm' ? 'px-3 py-1 text-xs' : size === 'lg' ? 'px-6 py-3 text-base' : 'px-4 py-2 text-sm'
+  const sizeClasses = size === 'sm' ? 'px-3 py-1 text-sm' : size === 'lg' ? 'px-6 py-3 text-base' : 'px-4 py-2 text-base'
 
   switch (name) {
     case 'Button': {
@@ -321,10 +321,10 @@ function ComponentPreview({ name, propValues, variant, isDark }: { name: string;
     }
     case 'Badge': {
       const colors: Record<string, string> = { default: 'bg-slate-100 text-slate-700', success: 'bg-emerald-100 text-emerald-700', warning: 'bg-amber-100 text-amber-700', error: 'bg-red-100 text-red-700', info: 'bg-sky-100 text-sky-700' }
-      return <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${colors[variant] || colors.default}`}>{children}</span>
+      return <span className={`px-2.5 py-0.5 rounded-full text-sm font-medium ${colors[variant] || colors.default}`}>{children}</span>
     }
     case 'Avatar': {
-      const sizeMap: Record<string, string> = { sm: 'w-8 h-8 text-xs', md: 'w-10 h-10 text-sm', lg: 'w-14 h-14 text-lg' }
+      const sizeMap: Record<string, string> = { sm: 'w-8 h-8 text-sm', md: 'w-10 h-10 text-base', lg: 'w-14 h-14 text-lg' }
       return <div className={`${sizeMap[size] || sizeMap.md} rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-semibold`}>{String(propValues['initials'] || 'AZ')}</div>
     }
     case 'Toggle': {
@@ -334,11 +334,11 @@ function ComponentPreview({ name, propValues, variant, isDark }: { name: string;
     case 'Tooltip': {
       return (
         <div className="relative inline-block">
-          <div className={`absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-slate-800 text-white text-xs whitespace-nowrap shadow-lg`}>
+          <div className={`absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-slate-800 text-white text-sm whitespace-nowrap shadow-lg`}>
             {String(propValues['content'] || 'Tooltip text')}
             <div className="absolute left-1/2 -translate-x-1/2 top-full w-2 h-2 bg-slate-800 rotate-45 -mt-1" />
           </div>
-          <button className="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 text-xs">Hover me</button>
+          <button className="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 text-sm">Hover me</button>
         </div>
       )
     }
@@ -346,35 +346,35 @@ function ComponentPreview({ name, propValues, variant, isDark }: { name: string;
       return (
         <div className={`border ${borderColor} rounded-lg overflow-hidden w-80`}>
           <div className="grid grid-cols-3 gap-0">
-            {['Name', 'Role', 'Status'].map(h => <div key={h} className={`px-3 py-2 text-xs font-semibold ${isDark ? 'bg-slate-800 text-slate-300' : 'bg-slate-50 text-slate-600'} border-b ${borderColor}`}>{h}</div>)}
-            {[['Alice', 'Admin', 'Active'], ['Bob', 'User', 'Inactive']].map((row, i) => row.map((cell, j) => <div key={`${i}-${j}`} className={`px-3 py-2 text-xs ${textColor} border-b ${borderColor}`}>{cell}</div>))}
+            {['Name', 'Role', 'Status'].map(h => <div key={h} className={`px-3 py-2 text-sm font-semibold ${isDark ? 'bg-slate-800 text-slate-300' : 'bg-slate-50 text-slate-600'} border-b ${borderColor}`}>{h}</div>)}
+            {[['Alice', 'Admin', 'Active'], ['Bob', 'User', 'Inactive']].map((row, i) => row.map((cell, j) => <div key={`${i}-${j}`} className={`px-3 py-2 text-sm ${textColor} border-b ${borderColor}`}>{cell}</div>))}
           </div>
         </div>
       )
     }
     case 'Select': {
-      return <div className={`px-4 py-2 rounded-lg border ${borderColor} ${isDark ? 'bg-slate-800' : 'bg-white'} ${textColor} text-sm w-48 flex items-center justify-between`}><span>{String(propValues['placeholder'] || 'Select option...')}</span><span className={mutedColor}>v</span></div>
+      return <div className={`px-4 py-2 rounded-lg border ${borderColor} ${isDark ? 'bg-slate-800' : 'bg-white'} ${textColor} text-base w-48 flex items-center justify-between`}><span>{String(propValues['placeholder'] || 'Select option...')}</span><span className={mutedColor}>v</span></div>
     }
     case 'DatePicker': {
-      return <div className={`px-4 py-2 rounded-lg border ${borderColor} ${isDark ? 'bg-slate-800' : 'bg-white'} ${textColor} text-sm w-48 flex items-center justify-between`}><span className={mutedColor}>Pick a date...</span><span className={mutedColor}>cal</span></div>
+      return <div className={`px-4 py-2 rounded-lg border ${borderColor} ${isDark ? 'bg-slate-800' : 'bg-white'} ${textColor} text-base w-48 flex items-center justify-between`}><span className={mutedColor}>Pick a date...</span><span className={mutedColor}>cal</span></div>
     }
     case 'Combobox': {
-      return <div className={`px-4 py-2 rounded-lg border ${borderColor} ${isDark ? 'bg-slate-800' : 'bg-white'} ${textColor} text-sm w-48`}><span className={mutedColor}>Search...</span></div>
+      return <div className={`px-4 py-2 rounded-lg border ${borderColor} ${isDark ? 'bg-slate-800' : 'bg-white'} ${textColor} text-base w-48`}><span className={mutedColor}>Search...</span></div>
     }
     case 'Card': {
       return (
         <div className={`rounded-xl border ${borderColor} ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-md w-64 overflow-hidden`}>
-          <div className="px-4 py-3 border-b border-inherit"><p className={`text-sm font-semibold ${textColor}`}>{String(propValues['title'] || 'Card Title')}</p></div>
-          <div className="px-4 py-3"><p className={`text-xs ${mutedColor}`}>Card content goes here with supporting text.</p></div>
+          <div className="px-4 py-3 border-b border-inherit"><p className={`text-base font-semibold ${textColor}`}>{String(propValues['title'] || 'Card Title')}</p></div>
+          <div className="px-4 py-3"><p className={`text-sm ${mutedColor}`}>Card content goes here with supporting text.</p></div>
         </div>
       )
     }
     case 'Dialog': {
       return (
         <div className={`rounded-xl border ${borderColor} ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-xl w-72 overflow-hidden`}>
-          <div className="px-4 py-3 border-b border-inherit flex items-center justify-between"><p className={`text-sm font-semibold ${textColor}`}>{String(propValues['title'] || 'Dialog Title')}</p><span className={mutedColor}>x</span></div>
-          <div className="px-4 py-4"><p className={`text-xs ${mutedColor}`}>Are you sure you want to continue?</p></div>
-          <div className="px-4 py-3 border-t border-inherit flex justify-end gap-2"><button className="px-3 py-1 text-xs rounded bg-slate-100 text-slate-700">Cancel</button><button className="px-3 py-1 text-xs rounded bg-indigo-600 text-white">Confirm</button></div>
+          <div className="px-4 py-3 border-b border-inherit flex items-center justify-between"><p className={`text-base font-semibold ${textColor}`}>{String(propValues['title'] || 'Dialog Title')}</p><span className={mutedColor}>x</span></div>
+          <div className="px-4 py-4"><p className={`text-sm ${mutedColor}`}>Are you sure you want to continue?</p></div>
+          <div className="px-4 py-3 border-t border-inherit flex justify-end gap-2"><button className="px-3 py-1 text-sm rounded bg-slate-100 text-slate-700">Cancel</button><button className="px-3 py-1 text-sm rounded bg-indigo-600 text-white">Confirm</button></div>
         </div>
       )
     }
@@ -382,9 +382,9 @@ function ComponentPreview({ name, propValues, variant, isDark }: { name: string;
       return (
         <div className="w-64">
           <div className={`flex border-b ${borderColor} gap-0`}>
-            {['Tab 1', 'Tab 2', 'Tab 3'].map((t, i) => <div key={t} className={`px-3 py-2 text-xs font-medium ${i === 0 ? `border-b-2 border-indigo-600 text-indigo-600` : mutedColor}`}>{t}</div>)}
+            {['Tab 1', 'Tab 2', 'Tab 3'].map((t, i) => <div key={t} className={`px-3 py-2 text-sm font-medium ${i === 0 ? `border-b-2 border-indigo-600 text-indigo-600` : mutedColor}`}>{t}</div>)}
           </div>
-          <div className="py-3"><p className={`text-xs ${mutedColor}`}>Tab content area</p></div>
+          <div className="py-3"><p className={`text-sm ${mutedColor}`}>Tab content area</p></div>
         </div>
       )
     }
@@ -392,8 +392,8 @@ function ComponentPreview({ name, propValues, variant, isDark }: { name: string;
       return (
         <div className={`rounded-xl border ${borderColor} ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-md w-64 p-4`}>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-semibold text-sm">JD</div>
-            <div><p className={`text-sm font-semibold ${textColor}`}>{String(propValues['name'] || 'Jane Doe')}</p><p className={`text-xs ${mutedColor}`}>{String(propValues['role'] || 'Product Designer')}</p></div>
+            <div className="w-10 h-10 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-semibold text-base">JD</div>
+            <div><p className={`text-base font-semibold ${textColor}`}>{String(propValues['name'] || 'Jane Doe')}</p><p className={`text-sm ${mutedColor}`}>{String(propValues['role'] || 'Product Designer')}</p></div>
           </div>
         </div>
       )
@@ -401,23 +401,23 @@ function ComponentPreview({ name, propValues, variant, isDark }: { name: string;
     case 'PricingCard': {
       return (
         <div className={`rounded-xl border ${borderColor} ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-md w-56 p-5`}>
-          <p className={`text-xs font-semibold ${mutedColor} uppercase tracking-wide`}>{String(propValues['tier'] || 'Pro')}</p>
-          <p className={`text-2xl font-bold ${textColor} mt-1`}>${String(propValues['price'] || '29')}<span className={`text-xs ${mutedColor} font-normal`}>/mo</span></p>
-          <div className="mt-3 space-y-1.5">{['Feature A', 'Feature B', 'Feature C'].map(f => <p key={f} className={`text-xs ${mutedColor}`}>{f}</p>)}</div>
-          <button className="mt-4 w-full py-2 rounded-lg bg-indigo-600 text-white text-xs font-medium">Get Started</button>
+          <p className={`text-sm font-semibold ${mutedColor} uppercase tracking-wide`}>{String(propValues['tier'] || 'Pro')}</p>
+          <p className={`text-2xl font-bold ${textColor} mt-1`}>${String(propValues['price'] || '29')}<span className={`text-sm ${mutedColor} font-normal`}>/mo</span></p>
+          <div className="mt-3 space-y-1.5">{['Feature A', 'Feature B', 'Feature C'].map(f => <p key={f} className={`text-sm ${mutedColor}`}>{f}</p>)}</div>
+          <button className="mt-4 w-full py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium">Get Started</button>
         </div>
       )
     }
     case 'StatCard': {
       return (
         <div className={`rounded-xl border ${borderColor} ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-md w-48 p-4`}>
-          <p className={`text-xs ${mutedColor} font-medium`}>{String(propValues['label'] || 'Revenue')}</p>
+          <p className={`text-sm ${mutedColor} font-medium`}>{String(propValues['label'] || 'Revenue')}</p>
           <p className={`text-xl font-bold ${textColor} mt-1`}>{String(propValues['value'] || '$12,345')}</p>
-          <p className="text-xs text-emerald-600 mt-1">{String(propValues['change'] || '+12.5%')}</p>
+          <p className="text-sm text-emerald-600 mt-1">{String(propValues['change'] || '+12.5%')}</p>
         </div>
       )
     }
     default:
-      return <div className={`px-6 py-4 rounded-lg border ${borderColor} ${textColor} text-sm`}>{name} Preview</div>
+      return <div className={`px-6 py-4 rounded-lg border ${borderColor} ${textColor} text-base`}>{name} Preview</div>
   }
 }

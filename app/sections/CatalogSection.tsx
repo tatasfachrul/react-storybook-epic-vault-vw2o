@@ -94,7 +94,7 @@ export default function CatalogSection({
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-semibold tracking-tight text-[hsl(222,47%,11%)]">Component Catalog</h1>
-        <p className="text-sm text-[hsl(215,16%,47%)] mt-1 leading-relaxed">Browse and explore all available components</p>
+        <p className="text-base text-[hsl(215,16%,47%)] mt-1 leading-relaxed">Browse and explore all available components</p>
       </div>
 
       <div className="flex flex-col gap-4">
@@ -103,7 +103,7 @@ export default function CatalogSection({
             <button
               key={key}
               onClick={() => setCategory(key)}
-              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 border ${category === key ? 'bg-[hsl(222,47%,11%)] text-white border-[hsl(222,47%,11%)]' : 'bg-white/60 text-[hsl(215,16%,47%)] border-[hsl(214,32%,91%)] hover:bg-white/80'}`}
+              className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 border ${category === key ? 'bg-[hsl(222,47%,11%)] text-white border-[hsl(222,47%,11%)]' : 'bg-white/60 text-[hsl(215,16%,47%)] border-[hsl(214,32%,91%)] hover:bg-white/80'}`}
             >
               {categoryLabels[key] ?? key}
             </button>
@@ -151,8 +151,8 @@ export default function CatalogSection({
         <Card className="bg-[hsl(0,0%,98%)]/75 backdrop-blur-[16px] border border-white/[0.18] rounded-[0.875rem] shadow-md">
           <CardContent className="py-12 text-center">
             <Search className="h-10 w-10 text-[hsl(215,16%,47%)] mx-auto mb-3 opacity-40" />
-            <p className="text-sm font-medium text-[hsl(222,47%,11%)]">No components found</p>
-            <p className="text-xs text-[hsl(215,16%,47%)] mt-1">Try adjusting your filters or search terms</p>
+            <p className="text-base font-medium text-[hsl(222,47%,11%)]">No components found</p>
+            <p className="text-sm text-[hsl(215,16%,47%)] mt-1">Try adjusting your filters or search terms</p>
           </CardContent>
         </Card>
       ) : (
@@ -165,12 +165,12 @@ export default function CatalogSection({
             >
               <CardContent className="pt-5 pb-4 px-5">
                 <div className="flex items-start justify-between mb-2">
-                  <h3 className="text-sm font-semibold text-[hsl(222,47%,11%)] group-hover:text-indigo-600 transition-colors">{comp.name}</h3>
+                  <h3 className="text-base font-semibold text-[hsl(222,47%,11%)] group-hover:text-indigo-600 transition-colors">{comp.name}</h3>
                   <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ${statusColor[comp.status] || ''}`}>
                     {comp.status}
                   </span>
                 </div>
-                <p className="text-xs text-[hsl(215,16%,47%)] leading-relaxed mb-3 line-clamp-2">{comp.description}</p>
+                <p className="text-sm text-[hsl(215,16%,47%)] leading-relaxed mb-3 line-clamp-2">{comp.description}</p>
                 <div className="flex items-center justify-between">
                   <Badge variant="outline" className="text-[10px] capitalize">{comp.category}</Badge>
                   <span className="text-[10px] text-[hsl(215,16%,47%)]">{Array.isArray(comp.variants) ? comp.variants.length : 0} variants</span>
@@ -181,7 +181,7 @@ export default function CatalogSection({
         </div>
       )}
 
-      <p className="text-xs text-[hsl(215,16%,47%)] text-center">
+      <p className="text-sm text-[hsl(215,16%,47%)] text-center">
         Showing {filtered.length} of {safeComponents.length} components
       </p>
     </div>

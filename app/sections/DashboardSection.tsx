@@ -68,14 +68,14 @@ export default function DashboardSection({
     <div className="space-y-8">
       <div>
         <h1 className="text-2xl font-semibold tracking-tight text-[hsl(222,47%,11%)]">Dashboard</h1>
-        <p className="text-sm text-[hsl(215,16%,47%)] mt-1 leading-relaxed">Overview of your component library</p>
+        <p className="text-base text-[hsl(215,16%,47%)] mt-1 leading-relaxed">Overview of your component library</p>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {stats.map((stat) => (
           <Card key={stat.label} className="bg-[hsl(0,0%,98%)]/75 backdrop-blur-[16px] border border-white/[0.18] rounded-[0.875rem] shadow-md">
             <CardContent className="pt-5 pb-4 px-5">
-              <p className="text-xs font-medium text-[hsl(215,16%,47%)] uppercase tracking-wide">{stat.label}</p>
+              <p className="text-sm font-medium text-[hsl(215,16%,47%)] uppercase tracking-wide">{stat.label}</p>
               <p className={`text-3xl font-semibold mt-1 ${stat.color}`}>{stat.value}</p>
             </CardContent>
           </Card>
@@ -99,10 +99,10 @@ export default function DashboardSection({
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between">
-                        <h3 className="text-sm font-semibold text-[hsl(222,47%,11%)]">{cat.name}</h3>
-                        <Badge variant="secondary" className="text-xs">{cat.count}</Badge>
+                        <h3 className="text-base font-semibold text-[hsl(222,47%,11%)]">{cat.name}</h3>
+                        <Badge variant="secondary" className="text-sm">{cat.count}</Badge>
                       </div>
-                      <p className="text-xs text-[hsl(215,16%,47%)] mt-1 leading-relaxed">{cat.description}</p>
+                      <p className="text-sm text-[hsl(215,16%,47%)] mt-1 leading-relaxed">{cat.description}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -122,8 +122,8 @@ export default function DashboardSection({
                     onClick={() => onSelectComponent(comp.id)}
                   >
                     <div className="min-w-0">
-                      <p className="text-sm font-medium text-[hsl(222,47%,11%)] truncate">{comp.name}</p>
-                      <p className="text-xs text-[hsl(215,16%,47%)] truncate">{comp.category}</p>
+                      <p className="text-base font-medium text-[hsl(222,47%,11%)] truncate">{comp.name}</p>
+                      <p className="text-sm text-[hsl(215,16%,47%)] truncate">{comp.category}</p>
                     </div>
                     <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ${statusColor[comp.status] || ''}`}>
                       {comp.status}
@@ -139,20 +139,20 @@ export default function DashboardSection({
           <Card className="bg-[hsl(0,0%,98%)]/75 backdrop-blur-[16px] border border-white/[0.18] rounded-[0.875rem] shadow-md">
             <CardContent className="pt-5 pb-4 px-5 space-y-3">
               <div className="flex items-start gap-3">
-                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-xs font-semibold shrink-0">1</span>
-                <p className="text-sm text-[hsl(215,16%,47%)] leading-relaxed">Browse components by category or search</p>
+                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-sm font-semibold shrink-0">1</span>
+                <p className="text-base text-[hsl(215,16%,47%)] leading-relaxed">Browse components by category or search</p>
               </div>
               <div className="flex items-start gap-3">
-                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-xs font-semibold shrink-0">2</span>
-                <p className="text-sm text-[hsl(215,16%,47%)] leading-relaxed">Preview variants and customize props in the detail view</p>
+                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-sm font-semibold shrink-0">2</span>
+                <p className="text-base text-[hsl(215,16%,47%)] leading-relaxed">Preview variants and customize props in the detail view</p>
               </div>
               <div className="flex items-start gap-3">
-                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-xs font-semibold shrink-0">3</span>
-                <p className="text-sm text-[hsl(215,16%,47%)] leading-relaxed">Copy the generated code snippet for your project</p>
+                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-sm font-semibold shrink-0">3</span>
+                <p className="text-base text-[hsl(215,16%,47%)] leading-relaxed">Copy the generated code snippet for your project</p>
               </div>
               <div className="flex items-start gap-3">
-                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-xs font-semibold shrink-0">4</span>
-                <p className="text-sm text-[hsl(215,16%,47%)] leading-relaxed">Ask the AI assistant for guidance and best practices</p>
+                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-sm font-semibold shrink-0">4</span>
+                <p className="text-base text-[hsl(215,16%,47%)] leading-relaxed">Ask the AI assistant for guidance and best practices</p>
               </div>
             </CardContent>
           </Card>
