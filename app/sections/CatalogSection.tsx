@@ -36,10 +36,10 @@ const statusColor: Record<string, string> = {
 
 const categoryLabels: Record<string, string> = {
   all: "All",
-  basic: "Basic UI",
-  complex: "Complex",
-  layout: "Layout",
-  domain: "Domain",
+  particles: "Particles",
+  atoms: "Atoms",
+  molecules: "Molecules",
+  organisms: "Organisms",
 };
 
 export default function CatalogSection({
@@ -98,7 +98,7 @@ export default function CatalogSection({
     return result;
   }, [safeComponents, category, statusFilter, searchDebounced, sortBy]);
 
-  const categoryKeys = ["all", "basic", "complex", "layout", "domain"];
+  const categoryKeys = ["all", "particles", "atoms", "molecules", "organisms"];
 
   return (
     <div className="space-y-6">

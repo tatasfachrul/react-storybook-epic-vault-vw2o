@@ -13,13 +13,12 @@ import {
   LayoutDashboard,
   Component,
   Shapes,
-  MessageSquareText,
   ChevronDown,
   ChevronRight,
-  Box,
   Puzzle,
-  Layout,
-  Briefcase,
+  Atom,
+  Sparkle,
+  Orbit,
 } from "lucide-react";
 import rrLogo from "../assets/rr-logo.png";
 import DashboardSection from "./sections/DashboardSection";
@@ -177,10 +176,10 @@ const CATEGORIES: Category[] = [
 const SAMPLE_DATA_COMPONENTS = COMPONENTS;
 
 const categoryIcons: Record<string, React.ReactNode> = {
-  particles: <Box className="h-4 w-4" />,
-  atoms: <Puzzle className="h-4 w-4" />,
-  molecules: <Layout className="h-4 w-4" />,
-  organisms: <Briefcase className="h-4 w-4" />,
+  particles: <Sparkle className="h-4 w-4" />,
+  atoms: <Atom className="h-4 w-4" />,
+  molecules: <Orbit className="h-4 w-4" />,
+  organisms: <Puzzle className="h-4 w-4" />,
 };
 
 // --- Main Page ---
