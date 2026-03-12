@@ -10,7 +10,7 @@ interface ComponentItem {
   id: string;
   name: string;
   description: string;
-  category: "basic" | "complex" | "layout" | "domain";
+  category: "particles" | "atoms" | "molecules" | "organisms";
   status: "stable" | "beta" | "new";
 }
 

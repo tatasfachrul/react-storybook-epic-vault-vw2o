@@ -1,100 +1,114 @@
-'use client'
+"use client";
 
-import React, { useState, useMemo, useCallback } from 'react'
-import { Card, CardContent } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Input } from '@/components/ui/input'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import React, { useState, useMemo, useCallback } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Search, Filter } from "lucide-react";
 
 interface ComponentItem {
-  id: string
-  name: string
-  description: string
-  category: 'basic' | 'complex' | 'layout' | 'domain'
-  status: 'stable' | 'beta' | 'new'
-  variants: string[]
+  id: string;
+  name: string;
+  description: string;
+  category: "particles" | "atoms" | "molecules" | "organisms";
+  status: "stable" | "beta" | "new";
+  variants: string[];
 }
 
 interface CatalogSectionProps {
-  components: ComponentItem[]
-  initialCategory: string
-  onSelectComponent: (componentId: string) => void
+  components: ComponentItem[];
+  initialCategory: string;
+  onSelectComponent: (componentId: string) => void;
 }
 
 const statusColor: Record<string, string> = {
-  stable: 'bg-emerald-100 text-emerald-700 border-emerald-200',
-  beta: 'bg-amber-100 text-amber-700 border-amber-200',
-  new: 'bg-sky-100 text-sky-700 border-sky-200',
-}
+  stable: "bg-emerald-100 text-emerald-700 border-emerald-200",
+  beta: "bg-amber-100 text-amber-700 border-amber-200",
+  new: "bg-sky-100 text-sky-700 border-sky-200",
+};
 
 const categoryLabels: Record<string, string> = {
-  all: 'All',
-  basic: 'Basic UI',
-  complex: 'Complex',
-  layout: 'Layout',
-  domain: 'Domain',
-}
+  all: "All",
+  basic: "Basic UI",
+  complex: "Complex",
+  layout: "Layout",
+  domain: "Domain",
+};
 
 export default function CatalogSection({
   components,
   initialCategory,
   onSelectComponent,
 }: CatalogSectionProps) {
-  const safeComponents = Array.isArray(components) ? components : []
+  const safeComponents = Array.isArray(components) ? components : [];
 
-  const [search, setSearch] = useState('')
-  const [category, setCategory] = useState(initialCategory || 'all')
-  const [statusFilter, setStatusFilter] = useState('all')
-  const [sortBy, setSortBy] = useState('name')
-  const [searchDebounced, setSearchDebounced] = useState('')
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState(initialCategory || "all");
+  const [statusFilter, setStatusFilter] = useState("all");
+  const [sortBy, setSortBy] = useState("name");
+  const [searchDebounced, setSearchDebounced] = useState("");
 
-  const debounceRef = React.useRef<ReturnType<typeof setTimeout> | null>(null)
+  const debounceRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleSearch = useCallback((value: string) => {
-    setSearch(value)
-    if (debounceRef.current) clearTimeout(debounceRef.current)
+    setSearch(value);
+    if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(() => {
-      setSearchDebounced(value)
-    }, 300)
-  }, [])
+      setSearchDebounced(value);
+    }, 300);
+  }, []);
 
   React.useEffect(() => {
-    if (initialCategory && initialCategory !== 'all') {
-      setCategory(initialCategory)
+    if (initialCategory && initialCategory !== "all") {
+      setCategory(initialCategory);
     }
-  }, [initialCategory])
+  }, [initialCategory]);
 
   const filtered = useMemo(() => {
-    let result = [...safeComponents]
-    if (category !== 'all') {
-      result = result.filter(c => c.category === category)
+    let result = [...safeComponents];
+    if (category !== "all") {
+      result = result.filter((c) => c.category === category);
     }
-    if (statusFilter !== 'all') {
-      result = result.filter(c => c.status === statusFilter)
+    if (statusFilter !== "all") {
+      result = result.filter((c) => c.status === statusFilter);
     }
     if (searchDebounced.trim()) {
-      const q = searchDebounced.toLowerCase()
-      result = result.filter(c => c.name.toLowerCase().includes(q) || c.description.toLowerCase().includes(q))
+      const q = searchDebounced.toLowerCase();
+      result = result.filter(
+        (c) =>
+          c.name.toLowerCase().includes(q) ||
+          c.description.toLowerCase().includes(q)
+      );
     }
-    if (sortBy === 'name') {
-      result.sort((a, b) => a.name.localeCompare(b.name))
-    } else if (sortBy === 'status') {
-      const order = { new: 0, beta: 1, stable: 2 }
-      result.sort((a, b) => (order[a.status] ?? 2) - (order[b.status] ?? 2))
-    } else if (sortBy === 'category') {
-      result.sort((a, b) => a.category.localeCompare(b.category))
+    if (sortBy === "name") {
+      result.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortBy === "status") {
+      const order = { new: 0, beta: 1, stable: 2 };
+      result.sort((a, b) => (order[a.status] ?? 2) - (order[b.status] ?? 2));
+    } else if (sortBy === "category") {
+      result.sort((a, b) => a.category.localeCompare(b.category));
     }
-    return result
-  }, [safeComponents, category, statusFilter, searchDebounced, sortBy])
+    return result;
+  }, [safeComponents, category, statusFilter, searchDebounced, sortBy]);
 
-  const categoryKeys = ['all', 'basic', 'complex', 'layout', 'domain']
+  const categoryKeys = ["all", "basic", "complex", "layout", "domain"];
 
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight text-[hsl(222,47%,11%)]">Component Catalog</h1>
-        <p className="text-base text-[hsl(215,16%,47%)] mt-1 leading-relaxed">Browse and explore all available components</p>
+        <h1 className="text-2xl font-semibold tracking-tight text-[hsl(222,47%,11%)]">
+          Component Catalog
+        </h1>
+        <p className="text-base text-[hsl(215,16%,47%)] mt-1 leading-relaxed">
+          Browse and explore all available components
+        </p>
       </div>
 
       <div className="flex flex-col gap-4">
@@ -103,7 +117,7 @@ export default function CatalogSection({
             <button
               key={key}
               onClick={() => setCategory(key)}
-              className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 border ${category === key ? 'bg-[hsl(222,47%,11%)] text-white border-[hsl(222,47%,11%)]' : 'bg-white/60 text-[hsl(215,16%,47%)] border-[hsl(214,32%,91%)] hover:bg-white/80'}`}
+              className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 border ${category === key ? "bg-[hsl(222,47%,11%)] text-white border-[hsl(222,47%,11%)]" : "bg-white/60 text-[hsl(215,16%,47%)] border-[hsl(214,32%,91%)] hover:bg-white/80"}`}
             >
               {categoryLabels[key] ?? key}
             </button>
@@ -151,8 +165,12 @@ export default function CatalogSection({
         <Card className="bg-[hsl(0,0%,98%)]/75 backdrop-blur-[16px] border border-white/[0.18] rounded-[0.875rem] shadow-md">
           <CardContent className="py-12 text-center">
             <Search className="h-10 w-10 text-[hsl(215,16%,47%)] mx-auto mb-3 opacity-40" />
-            <p className="text-base font-medium text-[hsl(222,47%,11%)]">No components found</p>
-            <p className="text-sm text-[hsl(215,16%,47%)] mt-1">Try adjusting your filters or search terms</p>
+            <p className="text-base font-medium text-[hsl(222,47%,11%)]">
+              No components found
+            </p>
+            <p className="text-sm text-[hsl(215,16%,47%)] mt-1">
+              Try adjusting your filters or search terms
+            </p>
           </CardContent>
         </Card>
       ) : (
@@ -165,15 +183,26 @@ export default function CatalogSection({
             >
               <CardContent className="pt-5 pb-4 px-5">
                 <div className="flex items-start justify-between mb-2">
-                  <h3 className="text-base font-semibold text-[hsl(222,47%,11%)] group-hover:text-indigo-600 transition-colors">{comp.name}</h3>
-                  <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ${statusColor[comp.status] || ''}`}>
+                  <h3 className="text-base font-semibold text-[hsl(222,47%,11%)] group-hover:text-indigo-600 transition-colors">
+                    {comp.name}
+                  </h3>
+                  <span
+                    className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ${statusColor[comp.status] || ""}`}
+                  >
                     {comp.status}
                   </span>
                 </div>
-                <p className="text-sm text-[hsl(215,16%,47%)] leading-relaxed mb-3 line-clamp-2">{comp.description}</p>
+                <p className="text-sm text-[hsl(215,16%,47%)] leading-relaxed mb-3 line-clamp-2">
+                  {comp.description}
+                </p>
                 <div className="flex items-center justify-between">
-                  <Badge variant="outline" className="text-[10px] capitalize">{comp.category}</Badge>
-                  <span className="text-[10px] text-[hsl(215,16%,47%)]">{Array.isArray(comp.variants) ? comp.variants.length : 0} variants</span>
+                  <Badge variant="outline" className="text-[10px] capitalize">
+                    {comp.category}
+                  </Badge>
+                  <span className="text-[10px] text-[hsl(215,16%,47%)]">
+                    {Array.isArray(comp.variants) ? comp.variants.length : 0}{" "}
+                    variants
+                  </span>
                 </div>
               </CardContent>
             </Card>
@@ -185,5 +214,5 @@ export default function CatalogSection({
         Showing {filtered.length} of {safeComponents.length} components
       </p>
     </div>
-  )
+  );
 }
