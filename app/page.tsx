@@ -7,23 +7,20 @@ import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import {
-  HiOutlineMagnifyingGlass,
-  HiOutlineBars3,
-  HiOutlineXMark,
-} from "react-icons/hi2";
-import {
-  TbLayoutDashboard,
-  TbComponents,
-  TbCategory,
-  TbDatabase,
-  TbMessageChatbot,
-  TbChevronDown,
-  TbChevronRight,
-  TbCube,
-  TbPuzzle,
-  TbLayout,
-  TbBriefcase,
-} from "react-icons/tb";
+  Search,
+  Menu,
+  X,
+  LayoutDashboard,
+  Component,
+  Shapes,
+  MessageSquareText,
+  ChevronDown,
+  ChevronRight,
+  Box,
+  Puzzle,
+  Layout,
+  Briefcase,
+} from "lucide-react";
 
 import DashboardSection from "./sections/DashboardSection";
 import CatalogSection from "./sections/CatalogSection";
@@ -694,10 +691,10 @@ const CATEGORIES: Category[] = [
 const SAMPLE_DATA_COMPONENTS = COMPONENTS;
 
 const categoryIcons: Record<string, React.ReactNode> = {
-  basic: <TbCube className="h-4 w-4" />,
-  complex: <TbPuzzle className="h-4 w-4" />,
-  layout: <TbLayout className="h-4 w-4" />,
-  domain: <TbBriefcase className="h-4 w-4" />,
+  basic: <Box className="h-4 w-4" />,
+  complex: <Puzzle className="h-4 w-4" />,
+  layout: <Layout className="h-4 w-4" />,
+  domain: <Briefcase className="h-4 w-4" />,
 };
 
 // --- Main Page ---
@@ -766,12 +763,12 @@ export default function Page() {
     {
       id: "dashboard",
       label: "Dashboard",
-      icon: <TbLayoutDashboard className="h-4 w-4" />,
+      icon: <LayoutDashboard className="h-4 w-4" />,
     },
     {
       id: "catalog",
       label: "All Components",
-      icon: <TbComponents className="h-4 w-4" />,
+      icon: <Component className="h-4 w-4" />,
     },
   ];
 
@@ -797,7 +794,7 @@ export default function Page() {
           <div className="px-5 py-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="w-7 h-7 rounded-lg bg-[hsl(222,47%,11%)] flex items-center justify-center">
-                <TbComponents className="h-4 w-4 text-white" />
+                <Component className="h-4 w-4 text-white" />
               </div>
               <span className="text-sm font-semibold tracking-tight">
                 ComponentVault
@@ -807,7 +804,7 @@ export default function Page() {
               onClick={() => setSidebarOpen(false)}
               className="p-1 rounded hover:bg-black/5 lg:hidden"
             >
-              <HiOutlineXMark className="h-4 w-4" />
+              <X className="h-4 w-4" />
             </button>
           </div>
           <Separator />
@@ -833,12 +830,12 @@ export default function Page() {
                   onClick={() => setCategoriesExpanded((p) => !p)}
                   className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium text-[hsl(215,16%,47%)] hover:bg-black/5 hover:text-[hsl(222,47%,11%)] transition-colors"
                 >
-                  <TbCategory className="h-4 w-4" />
+                  <Shapes className="h-4 w-4" />
                   <span className="flex-1 text-left">Categories</span>
                   {categoriesExpanded ? (
-                    <TbChevronDown className="h-3 w-3" />
+                    <ChevronDown className="h-3 w-3" />
                   ) : (
-                    <TbChevronRight className="h-3 w-3" />
+                    <ChevronRight className="h-3 w-3" />
                   )}
                 </button>
                 {categoriesExpanded && (
@@ -889,7 +886,7 @@ export default function Page() {
                 onClick={() => setSidebarOpen(true)}
                 className="p-1.5 rounded-lg hover:bg-black/5 lg:hidden"
               >
-                <HiOutlineBars3 className="h-5 w-5" />
+                <Menu className="h-5 w-5" />
               </button>
               <h2 className="text-sm font-semibold text-[hsl(222,47%,11%)] hidden sm:block">
                 {viewTitles[view]}
@@ -898,7 +895,7 @@ export default function Page() {
                 onSubmit={handleGlobalSearch}
                 className="flex-1 max-w-md ml-auto relative"
               >
-                <HiOutlineMagnifyingGlass className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[hsl(215,16%,47%)]" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[hsl(215,16%,47%)]" />
                 <Input
                   value={globalSearch}
                   onChange={(e) => setGlobalSearch(e.target.value)}
@@ -953,7 +950,7 @@ export default function Page() {
           className="fixed bottom-6 right-6 z-30 w-12 h-12 rounded-full bg-[hsl(222,47%,11%)] text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 flex items-center justify-center"
           aria-label="Open AI Assistant"
         >
-          <TbMessageChatbot className="h-5 w-5" />
+          <MessageSquareText className="h-5 w-5" />
         </button>
       </div>
     </ErrorBoundary>
