@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { HiOutlineMagnifyingGlass, HiOutlineFunnel } from 'react-icons/hi2'
+import { Search, Filter } from "lucide-react";
 
 interface ComponentItem {
   id: string
@@ -112,7 +112,7 @@ export default function CatalogSection({
 
         <div className="flex flex-col sm:flex-row gap-3">
           <div className="relative flex-1">
-            <HiOutlineMagnifyingGlass className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[hsl(215,16%,47%)]" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[hsl(215,16%,47%)]" />
             <Input
               placeholder="Search components..."
               value={search}
@@ -123,7 +123,7 @@ export default function CatalogSection({
           <div className="flex gap-3">
             <Select value={statusFilter} onValueChange={setStatusFilter}>
               <SelectTrigger className="w-[130px] bg-white/60 border-[hsl(214,32%,91%)] rounded-[0.875rem]">
-                <HiOutlineFunnel className="h-3.5 w-3.5 mr-1 text-[hsl(215,16%,47%)]" />
+                <Filter className="h-3.5 w-3.5 mr-1 text-[hsl(215,16%,47%)]" />
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
               <SelectContent>
@@ -150,7 +150,7 @@ export default function CatalogSection({
       {filtered.length === 0 ? (
         <Card className="bg-[hsl(0,0%,98%)]/75 backdrop-blur-[16px] border border-white/[0.18] rounded-[0.875rem] shadow-md">
           <CardContent className="py-12 text-center">
-            <HiOutlineMagnifyingGlass className="h-10 w-10 text-[hsl(215,16%,47%)] mx-auto mb-3 opacity-40" />
+            <Search className="h-10 w-10 text-[hsl(215,16%,47%)] mx-auto mb-3 opacity-40" />
             <p className="text-sm font-medium text-[hsl(222,47%,11%)]">No components found</p>
             <p className="text-xs text-[hsl(215,16%,47%)] mt-1">Try adjusting your filters or search terms</p>
           </CardContent>

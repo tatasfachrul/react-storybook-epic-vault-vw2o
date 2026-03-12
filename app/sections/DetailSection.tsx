@@ -12,8 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Separator } from '@/components/ui/separator'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { copyToClipboard } from '@/lib/clipboard'
-import { HiOutlineChevronRight, HiOutlineClipboardDocument, HiOutlineCheckCircle, HiOutlineArrowLeft } from 'react-icons/hi2'
-import { TbSun, TbMoon, TbGridDots } from 'react-icons/tb'
+import { ChevronRight, Copy, CheckCircle, ArrowLeft, Sun, Moon, Grip } from "lucide-react";
 
 interface PropItem {
   name: string
@@ -121,12 +120,12 @@ export default function DetailSection({ component, onBack, onNavigateToComponent
     <div className="space-y-6">
       <div className="flex items-center gap-2 text-xs text-[hsl(215,16%,47%)]">
         <button onClick={onBack} className="flex items-center gap-1 hover:text-[hsl(222,47%,11%)] transition-colors">
-          <HiOutlineArrowLeft className="h-3.5 w-3.5" />
+          <ArrowLeft className="h-3.5 w-3.5" />
           <span>Catalog</span>
         </button>
-        <HiOutlineChevronRight className="h-3 w-3" />
+        <ChevronRight className="h-3 w-3" />
         <span className="capitalize">{categoryLabels[comp.category] ?? comp.category}</span>
-        <HiOutlineChevronRight className="h-3 w-3" />
+        <ChevronRight className="h-3 w-3" />
         <span className="text-[hsl(222,47%,11%)] font-medium">{comp.name}</span>
       </div>
 
@@ -158,9 +157,9 @@ export default function DetailSection({ component, onBack, onNavigateToComponent
         <div className="flex items-center justify-between px-4 py-2 border-b border-[hsl(214,32%,91%)] bg-white/40">
           <span className="text-xs font-medium text-[hsl(215,16%,47%)]">Preview</span>
           <div className="flex gap-1">
-            <button onClick={() => setCanvasBg('light')} className={`p-1.5 rounded ${canvasBg === 'light' ? 'bg-[hsl(214,32%,91%)]' : 'hover:bg-white/60'}`}><TbSun className="h-3.5 w-3.5 text-[hsl(215,16%,47%)]" /></button>
-            <button onClick={() => setCanvasBg('dark')} className={`p-1.5 rounded ${canvasBg === 'dark' ? 'bg-[hsl(214,32%,91%)]' : 'hover:bg-white/60'}`}><TbMoon className="h-3.5 w-3.5 text-[hsl(215,16%,47%)]" /></button>
-            <button onClick={() => setCanvasBg('grid')} className={`p-1.5 rounded ${canvasBg === 'grid' ? 'bg-[hsl(214,32%,91%)]' : 'hover:bg-white/60'}`}><TbGridDots className="h-3.5 w-3.5 text-[hsl(215,16%,47%)]" /></button>
+            <button onClick={() => setCanvasBg('light')} className={`p-1.5 rounded ${canvasBg === 'light' ? 'bg-[hsl(214,32%,91%)]' : 'hover:bg-white/60'}`}><Sun className="h-3.5 w-3.5 text-[hsl(215,16%,47%)]" /></button>
+            <button onClick={() => setCanvasBg('dark')} className={`p-1.5 rounded ${canvasBg === 'dark' ? 'bg-[hsl(214,32%,91%)]' : 'hover:bg-white/60'}`}><Moon className="h-3.5 w-3.5 text-[hsl(215,16%,47%)]" /></button>
+            <button onClick={() => setCanvasBg('grid')} className={`p-1.5 rounded ${canvasBg === 'grid' ? 'bg-[hsl(214,32%,91%)]' : 'hover:bg-white/60'}`}><Grip className="h-3.5 w-3.5 text-[hsl(215,16%,47%)]" /></button>
           </div>
         </div>
         <div className={`${canvasBgClass} p-8 min-h-[200px] flex items-center justify-center transition-colors duration-200`}>
@@ -215,7 +214,7 @@ export default function DetailSection({ component, onBack, onNavigateToComponent
             <div className="flex items-center justify-between px-4 py-2 border-b border-[hsl(214,32%,91%)] bg-white/40">
               <span className="text-xs font-medium text-[hsl(215,16%,47%)]">Generated Code</span>
               <button onClick={handleCopy} className="flex items-center gap-1 text-xs text-[hsl(215,16%,47%)] hover:text-[hsl(222,47%,11%)] transition-colors">
-                {copied ? <><HiOutlineCheckCircle className="h-3.5 w-3.5 text-emerald-600" /><span className="text-emerald-600">Copied</span></> : <><HiOutlineClipboardDocument className="h-3.5 w-3.5" /><span>Copy</span></>}
+                {copied ? <><CheckCircle className="h-3.5 w-3.5 text-emerald-600" /><span className="text-emerald-600">Copied</span></> : <><Copy className="h-3.5 w-3.5" /><span>Copy</span></>}
               </button>
             </div>
             <div className="bg-slate-900 p-4">

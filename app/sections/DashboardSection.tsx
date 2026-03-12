@@ -4,7 +4,7 @@ import React from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
-import { HiOutlineCube, HiOutlineCheckCircle, HiOutlineBeaker, HiOutlineSparkles } from 'react-icons/hi2'
+import { Box, CheckCircle, FlaskConical, Sparkles } from "lucide-react";
 
 interface ComponentItem {
   id: string
@@ -35,11 +35,11 @@ const statusColor: Record<string, string> = {
 }
 
 const categoryIcons: Record<string, React.ReactNode> = {
-  basic: <HiOutlineCube className="h-6 w-6 text-indigo-500" />,
-  complex: <HiOutlineBeaker className="h-6 w-6 text-violet-500" />,
-  layout: <HiOutlineCheckCircle className="h-6 w-6 text-teal-500" />,
-  domain: <HiOutlineSparkles className="h-6 w-6 text-rose-500" />,
-}
+  basic: <Box className="h-6 w-6 text-indigo-500" />,
+  complex: <FlaskConical className="h-6 w-6 text-violet-500" />,
+  layout: <CheckCircle className="h-6 w-6 text-teal-500" />,
+  domain: <Sparkles className="h-6 w-6 text-rose-500" />,
+};
 
 export default function DashboardSection({
   components,
@@ -95,7 +95,7 @@ export default function DashboardSection({
                 <CardContent className="pt-5 pb-4 px-5">
                   <div className="flex items-start gap-3">
                     <div className="p-2 rounded-lg bg-white/60">
-                      {categoryIcons[cat.id] || <HiOutlineCube className="h-6 w-6 text-slate-500" />}
+                      {categoryIcons[cat.id] || <Box className="h-6 w-6 text-slate-500" />}
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between">
